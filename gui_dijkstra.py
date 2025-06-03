@@ -190,10 +190,28 @@ class DijkstraGUI:
                 self.canvas.create_line(x1, y1, x2, y2, width=2, fill='gray', 
                                       arrow=tk.LAST, arrowshape=(10, 12, 5), tags='arista')
                 
-                # Peso de la arista
+                # Peso de la arista - calcular posición offset para evitar superposición
                 mid_x, mid_y = (x1 + x2) / 2, (y1 + y2) / 2
-                self.canvas.create_text(mid_x, mid_y, text=str(peso), 
-                                      fill='red', font=('Arial', 10, 'bold'), tags='peso')
+                
+                # Calcular vector perpendicular para offset
+                dx, dy = x2 - x1, y2 - y1
+                length = math.sqrt(dx*dx + dy*dy)
+                if length > 0:
+                    # Vector perpendicular normalizado
+                    perp_x, perp_y = -dy/length, dx/length
+                    # Offset de 15 píxeles perpendicular a la línea
+                    offset_x, offset_y = perp_x * 15, perp_y * 15
+                else:
+                    offset_x, offset_y = 0, 0
+                
+                # Posición del texto con offset
+                text_x, text_y = mid_x + offset_x, mid_y + offset_y
+                
+                # Crear fondo blanco para el texto (mejor legibilidad)
+                self.canvas.create_oval(text_x-12, text_y-8, text_x+12, text_y+8, 
+                                      fill='white', outline='gray', width=1, tags='peso_bg')
+                self.canvas.create_text(text_x, text_y, text=str(peso), 
+                                      fill='darkred', font=('Arial', 9, 'bold'), tags='peso')
         
         # Dibujar nodos
         for nodo, (x, y) in self.posiciones_nodos.items():
@@ -321,4 +339,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main()
+    main()  

@@ -1,7 +1,7 @@
 from graph import Grafo
 
 def main():
-    ruta_archivo = "grafo.txt.txt"  # Asegurate de que el nombre y la ruta sean correctos
+    ruta_archivo = "grafo.txt.txt"  
     grafo = Grafo()
     grafo.cargar_desde_archivo(ruta_archivo)
 
