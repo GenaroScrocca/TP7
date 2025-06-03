@@ -1,0 +1,150 @@
+📖 Manual de Usuario - Dijkstra Concurrente
+
+🚀 Inicio Rápido
+Paso 1: Verificar Archivos
+Asegúrate de tener estos archivos en la misma carpeta:
+📁 Tu carpeta del proyecto/
+├── 📄 graph.py
+├── 📄 dijkstra_threaded.py  
+├── 📄 gui_dijkstra.py
+└── 📄 grafo.txt.txt
+
+Paso 2: Ejecutar
+python gui_dijkstra.py
+
+🎮 Usando la Interfaz
+Panel de Controles (Izquierda)
+
+🎯 Selección de Nodos
+
+Nodo Origen: Punto de partida para la búsqueda
+Nodo Destino: Punto de llegada deseado
+
+🔄 Modos de Ejecución
+Modo Simple (checkbox desactivado):
+
+Busca UN camino específico: Origen → Destino
+Ejecuta un solo thread
+Ideal para rutas específicas
+
+Modo Concurrente (checkbox activado):
+
+Busca TODOS los caminos hacia el Destino
+Ejecuta múltiples threads simultáneamente
+Compara qué origen llega más rápido/mejor al destino
+
+🕹️ Botones de Control
+
+🚀 Ejecutar Dijkstra: Inicia la búsqueda
+🔄 Reiniciar: Limpia resultados y visualización
+📁 Cargar Grafo: Recarga el archivo de datos -> modificara el grafo siguiendo las modificaciones del txt
+
+
+📊 Interpretando Resultados
+Tabla de Resultados
+Columnas:
+
+Thread: Identificador del hilo de ejecución
+Origen/Destino: Nodos de inicio y fin
+Distancia: Peso total del camino más corto
+Tiempo: Duración de la búsqueda
+
+Círculos azules: Nodos del grafo
+Líneas grises: Aristas con dirección (flechas)
+Números en fondo blanco: Pesos de las aristas
+Líneas verdes gruesas: Camino encontrado
+
+
+🔧 Modificando el Grafo
+Editando grafo.txt.txt
+# Formato: ORIGEN DESTINO PESO
+A B 4
+A C 2
+B C 5
+B D 10
+C D 3
+Reglas:
+
+Una arista por línea
+Separar con espacios: origen destino peso
+Pesos deben ser números positivos
+Nodos pueden ser letras, números o palabras
+
+Ejemplos de Modificación
+Agregar un nodo E:
+A B 4
+A C 2
+A E 7    ← Nueva conexión
+B C 5
+B D 10
+C D 3
+E D 1    ← Nueva conexión
+
+Cambiar pesos:
+A B 1    ← Era 4, ahora 1
+A C 8    ← Era 2, ahora 8
+B C 5
+B D 10
+C D 3
+
+Después de modificar: Presiona "📁 Cargar Grafo" en la interfaz
+
+💡 Casos de Uso Comunes
+Encontrar la Ruta Más Corta
+
+Selecciona origen: A
+Selecciona destino: D
+Desactiva "Modo Concurrente"
+Presiona "🚀 Ejecutar Dijkstra"
+Ve el resultado en verde en el grafo
+
+Comparar Todas las Rutas
+
+Selecciona solo destino: D
+Activa "Modo Concurrente"
+Presiona "🚀 Ejecutar Dijkstra"
+Ve qué origen llega mejor a D
+
+Verificar Conectividad
+
+Si aparece distancia "∞", no hay camino
+El grafo es dirigido: A→B no implica B→A
+
+
+⚠️ Solución de Problemas
+Error: No such file or directory: 'grafo.txt'
+Causa: Archivo de datos no encontrado
+Solución: Verifica que grafo.txt.txt esté en la misma carpeta
+
+Error: Los números se superponen en el grafo
+Causa: Grafos muy complejos
+Solución: Simplifica el grafo o usa menos nodos
+
+Error: La interfaz no responde
+Causa: Procesamiento intensivo
+Solución: Espera unos segundos, evita grafos muy grandes
+
+Error:No aparecen nodos en los comboboxes
+Causa: Error en el formato del archivo
+Solución: Verifica el formato: origen destino peso
+
+🎓 Consejos de Uso
+Para Estudiantes
+
+Experimenta con diferentes grafos
+Compara tiempos en modo concurrente
+Observa cómo cambian las rutas al modificar pesos
+Anota los resultados para análisis
+
+Para Pruebas
+
+Crea grafos pequeños primero (3-5 nodos)
+Verifica resultados manualmente
+Prueba casos extremos (nodos aislados)
+Mide diferencias de rendimiento
+
+Para Demostraciones
+
+Usa el modo concurrente para mostrar threading
+Modifica pesos en vivo para mostrar cambios
+Explica por qué ciertos caminos son mejores

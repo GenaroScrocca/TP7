@@ -2,7 +2,7 @@ Trabajo Práctico 7: Algoritmo de Dijkstra Concurrente
 📋 Información General
 Materia: Sistemas Concurrentes
 Tema: Implementación del Algoritmo de Dijkstra con Threading
-Autores: [Genaro Scrocca, Emanuel Ursini, Ignacio Santos, Melanie]
+Autores: [Genaro Scrocca, Emanuel Ursini, Ignacio Santos, Melanie ...]
 Fecha: Junio 2025
 
 🎯 Objetivos
@@ -47,7 +47,7 @@ Reconstrucción de rutas completas
 ✅ Concurrencia
 
 Threading real con threading.Thread
-Sincronización con locks para acceso thread-safe
+Diseño thread-safe sin locks --> Cada thread lee el grafo (solo lectura = thread-safe)
 Ejecución simultánea de múltiples búsquedas
 Medición de tiempos de ejecución por thread
 
@@ -62,21 +62,7 @@ Tabla de resultados con tiempos de ejecución
 
 
 🚀 Instrucciones de Uso
-Requisitos del Sistema
 
-Python 3.7 o superior
-Tkinter (incluido en Python estándar)
-Módulos estándar: threading, time, math
-
-Instalación
-bash# 1. Clonar o descargar los archivos del proyecto
-# 2. Verificar que estén todos los archivos:
-#    - graph.py
-#    - dijkstra_threaded.py  
-#    - gui_dijkstra.py
-#    - grafo.txt.txt
-
-# 3. No se requieren instalaciones adicionales
 Ejecución
 bash# Ejecutar la interfaz gráfica principal
 python gui_dijkstra.py
@@ -96,7 +82,7 @@ Presionar "🚀 Ejecutar Dijkstra"
 Ver múltiples threads compitiendo por llegar al destino
 
 
-📁 Formato del Archivo de Datos
+📁 Formato del Archivo de Datos -Ejemplo sujeto a modificaciones-
 grafo.txt.txt
 # Formato: ORIGEN DESTINO PESO
 A B 4
@@ -137,17 +123,6 @@ Competencia útil: Encontrar el mejor camino hacia un destino común
 Escalabilidad: Agregar más threads para grafos grandes
 Medición de rendimiento: Comparar tiempos de ejecución
 
-Sincronización Implementada
-python# Thread-safe para resultados
-self.lock = threading.Lock()
-with self.lock:
-    self.resultados.append(resultado)
-Métricas de Rendimiento
-
-Tiempo por thread: Medición individual
-Tiempo total: Ejecución paralela vs secuencial
-Identificación del ganador: Thread más rápido o mejor resultado
-
 
 🎨 Características de la GUI
 Visualización del Grafo
@@ -172,32 +147,6 @@ Tiempos de ejecución precisos
 Resaltado del camino en verde
 
 
-🔧 Aspectos Técnicos
-Algoritmo de Dijkstra
-pythondef dijkstra(self, inicio, fin):
-    # Inicialización
-    distancias = {nodo: float('inf') for nodo in self.grafo.get_nodos()}
-    distancias[inicio] = 0
-    
-    # Cola de prioridad con heap
-    cola = [(0, inicio)]
-    
-    # Algoritmo principal
-    while cola:
-        dist_actual, nodo_actual = heapq.heappop(cola)
-        # ... lógica del algoritmo
-Threading
-pythonclass DijkstraThread(threading.Thread):
-    def run(self):
-        # Ejecución del algoritmo en thread separado
-        self.distancia, self.camino = self.dijkstra(self.origen, self.destino)
-Complejidad
-
-Temporal: O((V + E) log V) donde V = nodos, E = aristas
-Espacial: O(V) para estructuras de datos
-Concurrencia: O(1) overhead por thread adicional
-
-
 📈 Resultados y Conclusiones
 Funcionalidad Verificada
 ✅ Algoritmo de Dijkstra correcto
@@ -206,6 +155,8 @@ Funcionalidad Verificada
 ✅ GUI responsiva y visual
 ✅ Carga de datos desde archivo
 ✅ Manejo de errores robusto
+
+
 Casos de Uso Reales
 
 Navegación GPS: Encontrar rutas más cortas
@@ -254,8 +205,3 @@ Cormen, T. H. et al. "Introduction to Algorithms" - Capítulo de Shortest Paths
 Python Threading Documentation: https://docs.python.org/3/library/threading.html
 Tkinter Documentation: https://docs.python.org/3/library/tkinter.html
 
-
-📞 Contacto
-Desarrollado por: [Tu Nombre]
-Email: [tu.email@universidad.edu]
-Fecha de entrega: Junio 2025

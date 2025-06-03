@@ -205,8 +205,3 @@ Cormen, T. H. et al. "Introduction to Algorithms" - Capítulo de Shortest Paths
 Python Threading Documentation: https://docs.python.org/3/library/threading.html
 Tkinter Documentation: https://docs.python.org/3/library/tkinter.html
 
-
-📞 Contacto
-Desarrollado por: [Tu Nombre]
-Email: [tu.email@universidad.edu]
-Fecha de entrega: Junio 2025
