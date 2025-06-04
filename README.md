@@ -2,7 +2,7 @@ Trabajo Práctico 7: Algoritmo de Dijkstra Concurrente
 📋 Información General
 Materia: Sistemas Concurrentes
 Tema: Implementación del Algoritmo de Dijkstra con Threading
-Autores: [Genaro Scrocca, Emanuel Ursini, Ignacio Santos, Melanie ...]
+Autores: [Genaro Scrocca, Emanuel Ursini, Ignacio Santos, Melany Marinetti]
 Fecha: Junio 2025
 
 🎯 Objetivos

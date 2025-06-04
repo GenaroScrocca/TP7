@@ -4,5 +4,7 @@ A E 7
 B C 5
 B D 10
 C D 3
+C B 5
 E D 1
-E C 6
+E A 7
+E C 3
